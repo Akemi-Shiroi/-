@@ -1,0 +1,10 @@
+com\example\mytask\service\WorkPlanService.class
+com\example\mytask\controller\WorkPlanController.class
+com\example\mytask\pojo\WorkPlanResourceRequest.class
+com\example\mytask\mapper\WorkPlanMapper.class
+com\example\mytask\service\serviceImpl\WorkPlanServiceImpl.class
+com\example\mytask\pojo\WorkPlanResource.class
+com\example\mytask\pojo\AddWorkPlanRequest.class
+com\example\mytask\pojo\WorkPlan.class
+com\example\mytask\pojo\WorkPlanDetailResponse.class
+com\example\mytask\pojo\Result.class

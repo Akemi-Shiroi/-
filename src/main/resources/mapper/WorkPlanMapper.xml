@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mytask.mapper.WorkPlanMapper">
+
+    <insert id="insertWorkPlan" parameterType="WorkPlan" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO work_plan
+        (
+            plan_name,
+            section_level_1,
+            section_level_2,
+            section_level_3,
+            area_location,
+            completed_percent,
+            current_plan_qty,
+            current_plan_percent,
+            plan_start_date,
+            plan_end_date,
+            remark,
+            status
+        )
+        VALUES
+        (
+            #{planName},
+            #{sectionLevel1},
+            #{sectionLevel2},
+            #{sectionLevel3},
+            #{areaLocation},
+            #{completedPercent},
+            #{currentPlanQty},
+            #{currentPlanPercent},
+            #{planStartDate},
+            #{planEndDate},
+            #{remark},
+            #{status}
+        )
+    </insert>
+
+    <insert id="insertWorkPlanStatus">
+        INSERT INTO work_plan_status
+        (
+            work_plan_id,
+            status
+        )
+        VALUES
+        (
+            #{workPlanId},
+            #{status}
+        )
+    </insert>
+
+    <update id="updateWorkPlan" parameterType="WorkPlan">
+        UPDATE work_plan
+        SET
+            plan_name = #{planName},
+            section_level_1 = #{sectionLevel1},
+            section_level_2 = #{sectionLevel2},
+            section_level_3 = #{sectionLevel3},
+            area_location = #{areaLocation},
+            completed_percent = #{completedPercent},
+            current_plan_qty = #{currentPlanQty},
+            current_plan_percent = #{currentPlanPercent},
+            plan_start_date = #{planStartDate},
+            plan_end_date = #{planEndDate},
+            remark = #{remark}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteResourcesByPlanId" parameterType="long">
+        DELETE FROM work_plan_resource
+        WHERE plan_id = #{planId}
+    </delete>
+
+    <delete id="deleteWorkPlanById" parameterType="long">
+        DELETE FROM work_plan
+        WHERE id = #{id}
+    </delete>
+
+    <select id="selectWorkPlanById" parameterType="long" resultType="WorkPlanDetailResponse">
+        SELECT
+            id,
+            plan_name AS planName,
+            section_level_1 AS sectionLevel1,
+            section_level_2 AS sectionLevel2,
+            section_level_3 AS sectionLevel3,
+            area_location AS areaLocation,
+            completed_percent AS completedPercent,
+            current_plan_qty AS currentPlanQty,
+            current_plan_percent AS currentPlanPercent,
+            plan_start_date AS planStartDate,
+            plan_end_date AS planEndDate,
+            remark,
+            created_at AS createdAt,
+            updated_at AS updatedAt
+        FROM work_plan
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAllWorkPlans" resultType="WorkPlanDetailResponse">
+        SELECT
+            id,
+            plan_name AS planName,
+            section_level_1 AS sectionLevel1,
+            section_level_2 AS sectionLevel2,
+            section_level_3 AS sectionLevel3,
+            area_location AS areaLocation,
+            completed_percent AS completedPercent,
+            current_plan_qty AS currentPlanQty,
+            current_plan_percent AS currentPlanPercent,
+            plan_start_date AS planStartDate,
+            plan_end_date AS planEndDate,
+            remark,
+            created_at AS createdAt,
+            updated_at AS updatedAt
+        FROM work_plan
+        ORDER BY id DESC
+    </select>
+
+    <select id="selectWorkPlanStatusByPlanId" parameterType="long" resultType="java.lang.Integer">
+        SELECT status
+        FROM work_plan_status
+        WHERE work_plan_id = #{workPlanId}
+    </select>
+
+    <update id="updateWorkPlanStatusByPlanId">
+        UPDATE work_plan_status
+        SET status = #{status}
+        WHERE work_plan_id = #{workPlanId}
+    </update>
+
+    <select id="selectResourcesByPlanId" parameterType="long" resultType="WorkPlanResource">
+        SELECT
+            id,
+            plan_id AS planId,
+            resource_type AS resourceType,
+            category_1 AS category1,
+            category_2 AS category2,
+            resource_name AS resourceName,
+            spec_model AS specModel,
+            unit,
+            quantity,
+            use_date AS useDate,
+            extra_flag AS extraFlag,
+            sort_no AS sortNo,
+            remark,
+            created_at AS createdAt,
+            updated_at AS updatedAt
+        FROM work_plan_resource
+        WHERE plan_id = #{planId}
+        ORDER BY sort_no ASC, id ASC
+    </select>
+
+    <insert id="batchInsertResources">
+        INSERT INTO work_plan_resource
+        (
+            plan_id,
+            resource_type,
+            category_1,
+            category_2,
+            resource_name,
+            spec_model,
+            unit,
+            quantity,
+            use_date,
+            extra_flag,
+            sort_no,
+            remark
+        )
+        VALUES
+        <foreach collection="resourceList" item="item" separator=",">
+            (
+                #{item.planId},
+                #{item.resourceType},
+                #{item.category1},
+                #{item.category2},
+                #{item.resourceName},
+                #{item.specModel},
+                #{item.unit},
+                #{item.quantity},
+                #{item.useDate},
+                #{item.extraFlag},
+                #{item.sortNo},
+                #{item.remark}
+            )
+        </foreach>
+    </insert>
+</mapper>
