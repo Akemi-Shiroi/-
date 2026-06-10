@@ -4,6 +4,7 @@ import com.example.mytask.pojo.AddWorkPlanRequest;
 import com.example.mytask.pojo.Result;
 import com.example.mytask.pojo.WorkPlanDetailResponse;
 import com.example.mytask.service.WorkPlanService;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +18,11 @@ import java.util.List;
 public class WorkPlanController {
 
     private final WorkPlanService workPlanService;
+    private final StringRedisTemplate stringRedisTemplate;
 
-    public WorkPlanController(WorkPlanService workPlanService) {
+    public WorkPlanController(WorkPlanService workPlanService, StringRedisTemplate stringRedisTemplate) {
         this.workPlanService = workPlanService;
+        this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @PostMapping("/add")
@@ -81,6 +84,18 @@ public class WorkPlanController {
         } catch (Exception exception) {
             return Result.fail("list query error");
         }
+    }
+
+    @RequestMapping(value = "/test", method = {RequestMethod.GET, RequestMethod.POST})
+    public Result<String> testRedis() {
+        String key = "test";
+        String value = stringRedisTemplate.opsForValue().get(key);
+        if ("haha".equals(value)) {
+            stringRedisTemplate.delete(key);
+            return Result.success("delete success");
+        }
+        stringRedisTemplate.opsForValue().set(key, "haha");
+        return Result.success("insert success");
     }
 
     @PostMapping("/ack/{id}")

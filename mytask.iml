@@ -56,11 +56,29 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.2.18" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:6.2.18" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:3.5.14" level="project" />
+    <orderEntry type="library" name="Maven: io.lettuce:lettuce-core:6.6.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: redis.clients.authentication:redis-authx-core:0.1.1-beta2" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.132.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:3.5.11" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:3.5.11" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.5.11" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-oxm:6.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.17" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:3.5.14" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:6.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:6.2.18" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.2.18" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:3.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.17" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:3.0.4" level="project" />
@@ -70,9 +88,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:3.5.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:3.5.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path:2.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.17" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:4.0.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: jakarta.activation:jakarta.activation-api:2.1.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:4.0.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.activation:jakarta.activation-api:2.1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.7.1" level="project" />
